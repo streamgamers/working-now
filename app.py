@@ -28,7 +28,7 @@ def shorts():
         return render_template("download.html", url = url)
     return render_template("home.html")
 @app.route("/youtube-mp3", methods = ["GET", "POST"])
-def mp3():
+def aud():
     if request.method == "POST":
         session['link'] = request.form.get('url')
         try:
