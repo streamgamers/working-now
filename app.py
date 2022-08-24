@@ -16,6 +16,28 @@ def home():
             return render_template("error.html")
         return render_template("download.html", url = url)
     return render_template("home.html")
+@app.route("/youtube-shorts-downloader", methods = ["GET", "POST"])
+def shorts():
+    if request.method == "POST":
+        session['link'] = request.form.get('url')
+        try:
+            url = YouTube(session['link'])
+            url.check_availability()
+        except:
+            return render_template("error.html")
+        return render_template("download.html", url = url)
+    return render_template("home.html")
+@app.route("/youtube-mp3", methods = ["GET", "POST"])
+def mp3():
+    if request.method == "POST":
+        session['link'] = request.form.get('url')
+        try:
+            url = YouTube(session['link'])
+            url.check_availability()
+        except:
+            return render_template("error.html")
+        return render_template("download.html", url = url)
+    return render_template("home.html")
 
 @app.route("/download", methods = ["GET", "POST"])
 def download_video():
